@@ -7,6 +7,10 @@ tools:
   - tipi-dizzy/send_to_discord
   - vscode
   - read
+  - read_file
+  - execute
+  - agent
+  - todo
 model: ["Claude Opus 4.7"]
 ---
 
