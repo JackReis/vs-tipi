@@ -11,6 +11,21 @@ A VS Code Agents plugin that wires the fleet into Jack's at-the-computer cockpit
 Prerequisites:
 - VS Code Insiders with the Agents Preview app (v1.115+)
 - Python 3.11+ on PATH
+- Node.js + npx (for the `nate-promptkit` remote MCP, if you want `/tipi:kit` to work)
+
+### Env var for `/tipi:kit` (optional)
+
+The `/tipi:kit` slash command + Today-mode kit auto-surface use Nate's PromptKit, which requires a subscriber URL (private credential, not in this repo). If you have a subscription:
+
+```bash
+# One-time — add to ~/.zshenv or equivalent, then reload shell:
+export NATE_PROMPTKIT_URL="https://www.contentmasterpro.limited/api/mcp/subscriber/<YOUR-TOKEN>"
+
+# For GUI apps (VS Code Insiders launched from Finder), also:
+launchctl setenv NATE_PROMPTKIT_URL "$NATE_PROMPTKIT_URL"
+```
+
+Reload VS Code Insiders after setting. Without this, `/tipi:kit` will fail gracefully with a message telling you to set the env var (never hallucinate a kit).
 
 Install the plugin:
 

@@ -23,6 +23,16 @@
     "tipi-epigenetics": {
       "command": "${CLAUDE_PLUGIN_ROOT}/scripts/run-mcp.sh",
       "args": ["tipi.mcp.epigenetics.server"]
+    },
+    "nate-promptkit": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "${NATE_PROMPTKIT_URL}"
+      ],
+      "description": "Nate B. Jones Exec Circle library (posts, prompt kits, guides). Requires NATE_PROMPTKIT_URL env var — set it to your subscriber MCP URL."
     }
   }
 }

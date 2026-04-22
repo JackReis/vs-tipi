@@ -5,6 +5,7 @@ tools:
   - tipi-consciousness/*
   - tipi-dizzy/*
   - tipi-epigenetics/*
+  - nate-promptkit/*
 model: ["Claude Opus 4.7"]
 user-invocable: true
 argument-hint: "the intent — @fleet picks the runtime and dispatches"
