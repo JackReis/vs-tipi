@@ -1,0 +1,13 @@
+{
+  "name": "tipi",
+  "description": "Minimal enclosure for gathering and sharing with the fleet — VS Code Agents plugin",
+  "version": "0.1.0",
+  "author": {
+    "name": "Jack Reis",
+    "email": "jackareis@gmail.com",
+    "url": "https://jack.digital"
+  },
+  "skills": "skills/",
+  "agents": "agents/",
+  "mcpServers": ".mcp.json"
+}

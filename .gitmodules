@@ -1,0 +1,3 @@
+[submodule "tipi"]
+	path = tipi
+	url = https://github.com/JackReis/tipi.git
