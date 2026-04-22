@@ -1,34 +1,28 @@
 {
   "mcpServers": {
     "tipi-consciousness": {
-      "command": "${CLAUDE_PLUGIN_ROOT}/tipi/.venv/bin/python",
-      "args": ["-m", "tipi.mcp.consciousness.server"],
-      "cwd": "${CLAUDE_PLUGIN_ROOT}/tipi"
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/run-mcp.sh",
+      "args": ["tipi.mcp.consciousness.server"]
     },
     "tipi-dizzy": {
-      "command": "${CLAUDE_PLUGIN_ROOT}/tipi/.venv/bin/python",
-      "args": ["-m", "tipi.mcp.dizzy.server"],
-      "cwd": "${CLAUDE_PLUGIN_ROOT}/tipi"
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/run-mcp.sh",
+      "args": ["tipi.mcp.dizzy.server"]
     },
     "tipi-hermes": {
-      "command": "${CLAUDE_PLUGIN_ROOT}/tipi/.venv/bin/python",
-      "args": ["-m", "tipi.mcp.hermes.server"],
-      "cwd": "${CLAUDE_PLUGIN_ROOT}/tipi"
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/run-mcp.sh",
+      "args": ["tipi.mcp.hermes.server"]
     },
     "tipi-openclaw": {
-      "command": "${CLAUDE_PLUGIN_ROOT}/tipi/.venv/bin/python",
-      "args": ["-m", "tipi.mcp.openclaw.server"],
-      "cwd": "${CLAUDE_PLUGIN_ROOT}/tipi"
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/run-mcp.sh",
+      "args": ["tipi.mcp.openclaw.server"]
     },
     "tipi-claude-spawn": {
-      "command": "${CLAUDE_PLUGIN_ROOT}/tipi/.venv/bin/python",
-      "args": ["-m", "tipi.mcp.claude_spawn.server"],
-      "cwd": "${CLAUDE_PLUGIN_ROOT}/tipi"
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/run-mcp.sh",
+      "args": ["tipi.mcp.claude_spawn.server"]
     },
     "tipi-epigenetics": {
-      "command": "${CLAUDE_PLUGIN_ROOT}/tipi/.venv/bin/python",
-      "args": ["-m", "tipi.mcp.epigenetics.server"],
-      "cwd": "${CLAUDE_PLUGIN_ROOT}/tipi"
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/run-mcp.sh",
+      "args": ["tipi.mcp.epigenetics.server"]
     }
   }
 }

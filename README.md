@@ -10,7 +10,7 @@ A VS Code Agents plugin that wires the fleet into Jack's at-the-computer cockpit
 
 Prerequisites:
 - VS Code Insiders with the Agents Preview app (v1.115+)
-- `~/Documents/tipi/` cloned and its venv set up (`python3 -m venv .venv && .venv/bin/pip install -e '.[dev]'`)
+- Python 3.11+ on PATH
 
 Install the plugin:
 
@@ -19,13 +19,25 @@ In VS Code Insiders → Command Palette → "Chat: Install Plugin From Source"
 → enter: https://github.com/JackReis/vs-tipi
 ```
 
-The plugin pulls the `tipi` submodule automatically. The MCP servers assume `tipi/.venv/` exists inside the submodule — run the install script if needed:
+**That's it.** The `tipi` submodule pulls automatically. On first MCP invocation, `scripts/run-mcp.sh` self-heals:
+- Creates `tipi/.venv/` if missing
+- `pip install -e '.[dev]'` inside the submodule
+- Then boots the requested MCP module
+
+No manual venv step required. Subsequent launches reuse the bootstrap venv.
+
+### If something goes wrong
 
 ```bash
-cd <plugin-root>/tipi
-python3 -m venv .venv && .venv/bin/pip install -e '.[dev]'
-.venv/bin/pytest tests/  # should be 46 passed
+# find the plugin install location (VS Code Insiders varies by build)
+cd <plugin-root>    # usually ~/.vscode-insiders/... or similar
+cd tipi
+python3 -m venv .venv
+.venv/bin/pip install -e '.[dev]'
+.venv/bin/pytest tests/   # should be 46 passed
 ```
+
+Then check `scripts/run-mcp.sh` is executable (`chmod +x scripts/run-mcp.sh`).
 
 ## What's inside
 
