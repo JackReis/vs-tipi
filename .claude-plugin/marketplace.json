@@ -1,0 +1,32 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "vs-tipi",
+  "description": "Tipi enclosures — at-the-computer agentic fleet coordination. Currently ships one plugin: tipi, the VS Code Agents enclosure.",
+  "owner": {
+    "name": "JackReis",
+    "email": "jackareis@gmail.com"
+  },
+  "version": "0.1.0",
+  "repository": "https://github.com/JackReis/vs-tipi",
+  "plugins": [
+    {
+      "name": "tipi",
+      "source": "./plugins/tipi",
+      "description": "Minimal enclosure for gathering and sharing with the fleet — 5 agents, 6 slash commands, Today chat mode, 6 MCP servers wired to the portable tipi core (github.com/JackReis/tipi).",
+      "version": "0.1.0",
+      "category": "productivity",
+      "author": {
+        "name": "JackReis",
+        "email": "jackareis@gmail.com"
+      },
+      "keywords": [
+        "fleet",
+        "coordination",
+        "agents",
+        "mcp",
+        "consciousness",
+        "tipi"
+      ]
+    }
+  ]
+}

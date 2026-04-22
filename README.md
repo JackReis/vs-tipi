@@ -41,14 +41,24 @@ Then check `scripts/run-mcp.sh` is executable (`chmod +x scripts/run-mcp.sh`).
 
 ## What's inside
 
-| Component | Purpose |
-|---|---|
-| `plugin.json` | VS Code Agents plugin manifest |
-| `.mcp.json` | Wires the 6 tipi MCP servers (consciousness, dizzy, hermes, openclaw, claude_spawn, epigenetics) |
-| `agents/` | Custom agents — `@hermes`, `@zolivier`, `@kimiclaw`, `@claude-new`, `@fleet` |
-| `skills/` | Slash commands — `/gather`, `/dispatch`, `/inbox`, `/handoff`, `/resume`, `/kit` |
-| `chatmodes/` | Today mode (auto-surfaces briefing + 3 relevant kits on session start) |
-| `tipi/` | Submodule — the portable fleet core |
+`vs-tipi` is a **marketplace** containing one plugin (`tipi`). Layout:
+
+```
+vs-tipi/
+├── .claude-plugin/
+│   └── marketplace.json          # marketplace catalog
+└── plugins/
+    └── tipi/
+        ├── .claude-plugin/
+        │   └── plugin.json       # plugin manifest
+        ├── .mcp.json             # 6 tipi MCP servers
+        ├── agents/               # @hermes, @zolivier, @kimiclaw, @claude-new, @fleet
+        ├── skills/               # /gather, /dispatch, /inbox, /handoff, /resume, /kit
+        ├── chatmodes/            # Today mode
+        ├── scripts/
+        │   └── run-mcp.sh        # self-healing MCP launcher
+        └── tipi/                 # submodule — the portable fleet core
+```
 
 ## The shelter metaphor
 

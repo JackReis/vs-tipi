@@ -20,6 +20,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
+
+def _plugin_json_path() -> Path:
+    """Plugin manifest moved from root to .claude-plugin/ in marketplace layout."""
+    a = ROOT / ".claude-plugin" / "plugin.json"
+    b = ROOT / "plugin.json"
+    return a if a.exists() else b
+
 REQUIRED_PLUGIN_FIELDS = {"name", "description", "version"}
 REQUIRED_AGENT_FRONTMATTER = {"name", "description"}
 REQUIRED_SKILL_FRONTMATTER = {"name"}
@@ -66,9 +73,9 @@ def _read_frontmatter(path: Path) -> dict:
 
 
 def check_plugin_json(errors: list[str]) -> dict | None:
-    path = ROOT / "plugin.json"
+    path = _plugin_json_path()
     if not path.exists():
-        errors.append("plugin.json missing at repo root")
+        errors.append("plugin.json missing (checked .claude-plugin/ and root)")
         return None
     try:
         data = json.loads(path.read_text())
