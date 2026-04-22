@@ -6,6 +6,8 @@ Checks:
 - Each skills/*/SKILL.md has valid YAML frontmatter
 - .mcp.json is valid JSON and references exist
 - Tools listed in agents resolve to mcpServers in .mcp.json (prefix match)
+- Each agent's tools list is a subset of tool-manifest.yaml's `allowed` for that agent
+  (agents with extra tools = CI failure; prevents silent privilege creep)
 
 Exit code 0 on success, 1 on any error.
 
@@ -104,12 +106,45 @@ def check_mcp_json(errors: list[str]) -> dict | None:
     return data
 
 
+def _load_tool_manifest() -> dict | None:
+    """Load tool-manifest.yaml (no pyyaml dependency — minimal parser)."""
+    path = ROOT / "agents" / "tool-manifest.yaml"
+    if not path.exists():
+        return None
+    # Minimal YAML parser: handles nested {agents: {name: {description, allowed: [list]}}}
+    manifest: dict = {"agents": {}}
+    current_agent: str | None = None
+    current_list: list | None = None
+    in_agents = False
+    for raw in path.read_text().splitlines():
+        stripped = raw.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        indent = len(raw) - len(raw.lstrip(" "))
+        if stripped == "agents:":
+            in_agents = True
+            continue
+        if not in_agents:
+            continue
+        if indent == 2 and stripped.endswith(":"):
+            current_agent = stripped[:-1]
+            manifest["agents"][current_agent] = {"allowed": []}
+            current_list = None
+        elif indent == 4 and stripped == "allowed:":
+            current_list = manifest["agents"][current_agent]["allowed"]
+        elif indent == 6 and stripped.startswith("- "):
+            if current_list is not None:
+                current_list.append(stripped[2:].strip())
+    return manifest
+
+
 def check_agents(errors: list[str], mcp: dict) -> None:
     agents_dir = ROOT / "agents"
     if not agents_dir.exists():
         errors.append("agents/ directory missing")
         return
     servers = set((mcp or {}).get("mcpServers", {}).keys())
+    manifest = _load_tool_manifest()
     files = sorted(agents_dir.glob("*.agent.md"))
     if not files:
         errors.append("agents/ has no *.agent.md files")
@@ -124,13 +159,37 @@ def check_agents(errors: list[str], mcp: dict) -> None:
         if missing:
             errors.append(f"{path.name}: missing frontmatter {sorted(missing)}")
         tools = fm.get("tools", [])
-        if isinstance(tools, list):
-            for tool in tools:
-                server = tool.split("/", 1)[0]
-                if server.startswith("tipi-") and server not in servers:
-                    errors.append(
-                        f"{path.name}: tool {tool!r} references unregistered server {server!r}"
+        if not isinstance(tools, list):
+            continue
+        # MCP-server existence check
+        for tool in tools:
+            server = tool.split("/", 1)[0]
+            if server.startswith("tipi-") and server not in servers:
+                errors.append(
+                    f"{path.name}: tool {tool!r} references unregistered server {server!r}"
+                )
+        # Tool-manifest permission check (privilege-creep guard)
+        if manifest:
+            agent_name = fm.get("name") or path.stem.removesuffix(".agent")
+            policy = manifest.get("agents", {}).get(agent_name)
+            if policy is None:
+                errors.append(
+                    f"{path.name}: agent {agent_name!r} has no entry in tool-manifest.yaml"
+                )
+            else:
+                allowed = set(policy.get("allowed", []))
+                for tool in tools:
+                    if tool in allowed:
+                        continue
+                    # Check wildcard match: allowed entry "foo/*" covers "foo/bar"
+                    wildcard_match = any(
+                        a.endswith("/*") and tool.startswith(a[:-1])
+                        for a in allowed
                     )
+                    if not wildcard_match:
+                        errors.append(
+                            f"{path.name}: tool {tool!r} not in manifest `allowed` for agent {agent_name!r}"
+                        )
 
 
 def check_skills(errors: list[str]) -> None:
@@ -166,8 +225,10 @@ def main() -> int:
     n_agents = len(list((ROOT / "agents").glob("*.agent.md")))
     n_skills = sum(1 for p in (ROOT / "skills").iterdir() if p.is_dir()) if (ROOT / "skills").exists() else 0
     n_servers = len(mcp.get("mcpServers", {})) if mcp else 0
+    manifest = _load_tool_manifest()
+    manifest_note = f"+ tool-manifest ({len(manifest['agents'])} policies)" if manifest else "(no manifest)"
     print(f"OK — plugin={plugin['name']} version={plugin['version']}")
-    print(f"     {n_agents} agents, {n_skills} skills, {n_servers} MCP servers")
+    print(f"     {n_agents} agents, {n_skills} skills, {n_servers} MCP servers {manifest_note}")
     return 0
 
 

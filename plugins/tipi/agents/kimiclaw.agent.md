@@ -5,6 +5,8 @@ tools:
   - tipi-openclaw/dispatch_to_kimiclaw
   - tipi-consciousness/search_beliefs
   - tipi-consciousness/search_mind
+  - vscode
+  - read
 model: ["Claude Sonnet 4.6"]
 user-invocable: true
 argument-hint: "the task you want KimiClaw to run"

@@ -1,0 +1,41 @@
+name: submodule-freshness
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Daily — catch drift when nobody's actively pushing
+    - cron: "0 12 * * *"
+
+jobs:
+  check-tipi-submodule:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 1
+
+      - name: Ensure plugins/tipi/tipi points at jackreis/tipi main HEAD
+        run: |
+          set -euo pipefail
+          cd plugins/tipi/tipi
+          PINNED_SHA="$(git rev-parse HEAD)"
+          echo "Submodule pinned at: $PINNED_SHA"
+
+          UPSTREAM_SHA="$(git ls-remote https://github.com/JackReis/tipi.git refs/heads/main | cut -f1)"
+          echo "Upstream tipi main: $UPSTREAM_SHA"
+
+          if [ "$PINNED_SHA" != "$UPSTREAM_SHA" ]; then
+            # Compute how many commits behind
+            git fetch --depth=50 origin main
+            BEHIND="$(git rev-list --count "$PINNED_SHA..origin/main" 2>/dev/null || echo '?')"
+            echo "::warning::submodule is $BEHIND commits behind upstream tipi main"
+            if [ "${STRICT:-false}" = "true" ]; then
+              echo "::error::submodule must match upstream main (strict mode)"
+              exit 1
+            fi
+          else
+            echo "submodule is up to date with tipi main"
+          fi

@@ -6,6 +6,8 @@ tools:
   - tipi-consciousness/search_beliefs
   - tipi-consciousness/search_mind
   - tipi-consciousness/body_state
+  - vscode
+  - read
 model: ["Claude Sonnet 4.6", "Claude Opus 4.7"]
 user-invocable: true
 argument-hint: "the task you want Hermes to run (include acceptance criteria)"

@@ -4,6 +4,24 @@ description: Spawn a fresh Claude Code session with a prompt. Use when you need 
 tools:
   - tipi-claude-spawn/*
   - tipi-consciousness/*
+  - tipi-dizzy/*
+  - nate-promptkit/*
+  - vscode
+  - execute
+  - read
+  - agent
+  - browser
+  - new
+  - todo
+  - ms-python.python/getPythonEnvironmentInfo
+  - ms-python.python/getPythonExecutableCommand
+  - ms-python.python/installPythonPackage
+  - ms-python.python/configurePythonEnvironment
+  - ms-toolsai.jupyter/configureNotebook
+  - ms-toolsai.jupyter/listNotebookPackages
+  - ms-toolsai.jupyter/installNotebookPackages
+  - vscode.mermaid-chat-features/renderMermaidDiagram
+  - ms-azuretools.vscode-containers/containerToolsConfig
 model: ["Claude Opus 4.7", "Claude Sonnet 4.6"]
 user-invocable: true
 argument-hint: "the prompt for the fresh session (should be self-contained)"

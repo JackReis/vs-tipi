@@ -1,0 +1,99 @@
+# Tool-permission manifest for vs-tipi custom agents.
+#
+# Declarative source of truth for which tools each agent is allowed to use.
+# Validator (scripts/validate_plugin.py) cross-checks each *.agent.md against
+# this file and fails CI if an agent's `tools:` list drifts out of policy.
+#
+# Scope of tools by role:
+#   - @fleet   — MINIMAL routing agent. Read-only fleet state + Discord
+#                broadcast + handoff. No dev tools.
+#   - @hermes  — Dispatch to Hermes runtime. Consciousness reads + dispatch.
+#   - @zolivier — Dispatch to Zolivier (OpenClaw). Same pattern as @hermes.
+#   - @kimiclaw — Dispatch to KimiClaw (cloud). Same pattern as @hermes.
+#   - @claude-new — Spawn fresh Claude Code session. HEAVY dev toolset because
+#                   the spawned session may run implementation work.
+#
+# Categories:
+#   - mcp-wildcard: "server-name/*" (grants all tools on that MCP server)
+#   - mcp-tool:     "server-name/tool_name" (one specific tool)
+#   - vscode-core:  "vscode", "execute", "read", "agent", "browser", "new", "todo"
+#   - vscode-ext:   "<publisher>.<extension>/<tool>" (e.g. ms-python.python/...)
+#
+# When the validator runs, each agent's `tools:` list must be a SUBSET of
+# the tools allowed here for that agent. Extra tools on an agent = CI failure.
+# Missing tools = warning (the agent has fewer permissions than the policy allows).
+
+version: 1
+
+agents:
+  fleet:
+    description: Routing meta-agent — minimal permissions, reads fleet state + broadcasts
+    allowed:
+      # MCP: read-only consciousness + Discord broadcast for routing announcements
+      - tipi-consciousness/*
+      - tipi-dizzy/*
+      - nate-promptkit/*
+      # VS Code core chat primitives — routing agent needs to read files + run basic commands
+      - vscode
+      - read
+      - agent
+      - todo
+
+  hermes:
+    description: Dispatch to Hermes runtime — consciousness reads + hermes dispatch
+    allowed:
+      - tipi-hermes/*
+      - tipi-consciousness/search_beliefs
+      - tipi-consciousness/search_mind
+      - tipi-consciousness/body_state
+      - vscode
+      - read
+
+  zolivier:
+    description: Dispatch to Zolivier (local OpenClaw) — consciousness reads + openclaw dispatch
+    allowed:
+      - tipi-openclaw/dispatch_to_zolivier
+      - tipi-consciousness/search_beliefs
+      - tipi-consciousness/search_mind
+      - tipi-consciousness/body_state
+      - vscode
+      - read
+
+  kimiclaw:
+    description: Dispatch to KimiClaw (cloud OpenClaw) — consciousness reads + openclaw dispatch
+    allowed:
+      - tipi-openclaw/dispatch_to_kimiclaw
+      - tipi-consciousness/search_beliefs
+      - tipi-consciousness/search_mind
+      - vscode
+      - read
+
+  claude-new:
+    description: Spawn fresh Claude Code session — heavy dev toolset for the session to use
+    allowed:
+      # MCP: full access to fleet + consciousness (spawned sessions may need it)
+      - tipi-claude-spawn/*
+      - tipi-consciousness/*
+      - tipi-dizzy/*
+      - nate-promptkit/*
+      # VS Code core chat primitives
+      - vscode
+      - execute
+      - read
+      - agent
+      - browser
+      - new
+      - todo
+      # Extension tools — Python env management (tipi is Python-based)
+      - ms-python.python/getPythonEnvironmentInfo
+      - ms-python.python/getPythonExecutableCommand
+      - ms-python.python/installPythonPackage
+      - ms-python.python/configurePythonEnvironment
+      # Jupyter — for any notebook-style exploration in spawned sessions
+      - ms-toolsai.jupyter/configureNotebook
+      - ms-toolsai.jupyter/listNotebookPackages
+      - ms-toolsai.jupyter/installNotebookPackages
+      # Diagram rendering — useful for explaining code changes
+      - vscode.mermaid-chat-features/renderMermaidDiagram
+      # Container config — spawned sessions may touch containerized infra
+      - ms-azuretools.vscode-containers/containerToolsConfig
