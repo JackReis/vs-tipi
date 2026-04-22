@@ -6,6 +6,22 @@ tools:
   - tipi-dizzy/*
   - tipi-epigenetics/*
   - nate-promptkit/*
+  - vscode
+  - execute
+  - read
+  - agent
+  - browser
+  - new
+  - todo
+  - vscode.mermaid-chat-features/renderMermaidDiagram
+  - ms-azuretools.vscode-containers/containerToolsConfig
+  - ms-python.python/getPythonEnvironmentInfo
+  - ms-python.python/getPythonExecutableCommand
+  - ms-python.python/installPythonPackage
+  - ms-python.python/configurePythonEnvironment
+  - ms-toolsai.jupyter/configureNotebook
+  - ms-toolsai.jupyter/listNotebookPackages
+  - ms-toolsai.jupyter/installNotebookPackages
 model: ["Claude Opus 4.7"]
 user-invocable: true
 argument-hint: "the intent — @fleet picks the runtime and dispatches"
