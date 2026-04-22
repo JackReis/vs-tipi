@@ -211,12 +211,41 @@ def check_skills(errors: list[str]) -> None:
             errors.append(f"skills/{skill_dir.name}/SKILL.md: missing frontmatter {sorted(missing)}")
 
 
+def check_chatmodes(errors: list[str], mcp: dict) -> None:
+    """Verify chat-mode tool lists reference only registered MCP servers.
+
+    This exists because tipi-epigenetics/* leaked into today.chatmode.md after
+    the epigenetics MCP was deleted — the validator only scanned agents/ and
+    skills/, so the stale reference shipped and Today mode hallucinated.
+    """
+    chatmodes_dir = ROOT / "chatmodes"
+    if not chatmodes_dir.exists():
+        return
+    servers = set((mcp or {}).get("mcpServers", {}).keys())
+    for path in sorted(chatmodes_dir.glob("*.chatmode.md")):
+        try:
+            fm = _read_frontmatter(path)
+        except ValueError as exc:
+            errors.append(str(exc))
+            continue
+        tools = fm.get("tools", [])
+        if not isinstance(tools, list):
+            continue
+        for tool in tools:
+            server = tool.split("/", 1)[0]
+            if server.startswith("tipi-") and server not in servers:
+                errors.append(
+                    f"{path.name}: tool {tool!r} references unregistered server {server!r}"
+                )
+
+
 def main() -> int:
     errors: list[str] = []
     plugin = check_plugin_json(errors)
     mcp = check_mcp_json(errors)
     check_agents(errors, mcp or {})
     check_skills(errors)
+    check_chatmodes(errors, mcp or {})
     if errors:
         print("VALIDATION FAILED:")
         for e in errors:
@@ -224,11 +253,12 @@ def main() -> int:
         return 1
     n_agents = len(list((ROOT / "agents").glob("*.agent.md")))
     n_skills = sum(1 for p in (ROOT / "skills").iterdir() if p.is_dir()) if (ROOT / "skills").exists() else 0
+    n_chatmodes = len(list((ROOT / "chatmodes").glob("*.chatmode.md"))) if (ROOT / "chatmodes").exists() else 0
     n_servers = len(mcp.get("mcpServers", {})) if mcp else 0
     manifest = _load_tool_manifest()
     manifest_note = f"+ tool-manifest ({len(manifest['agents'])} policies)" if manifest else "(no manifest)"
     print(f"OK — plugin={plugin['name']} version={plugin['version']}")
-    print(f"     {n_agents} agents, {n_skills} skills, {n_servers} MCP servers {manifest_note}")
+    print(f"     {n_agents} agents, {n_skills} skills, {n_chatmodes} chatmodes, {n_servers} MCP servers {manifest_note}")
     return 0
 
 
