@@ -68,6 +68,16 @@ agents:
       - vscode
       - read
 
+  pt:
+    description: Dispatch to PT (local Gemini CLI runtime, Discord surface Neo) — consciousness reads + shell-out via execute primitive (no tipi-pt MCP yet)
+    allowed:
+      - tipi-consciousness/search_beliefs
+      - tipi-consciousness/search_mind
+      - tipi-consciousness/body_state
+      - vscode
+      - read
+      - execute
+
   claude-new:
     description: Spawn fresh Claude Code session — heavy dev toolset for the session to use
     allowed:

@@ -11,6 +11,7 @@ Generated surfaces:
 - `hermes.agent.md`
 - `zolivier.agent.md`
 - `kimiclaw.agent.md`
+- `pt.agent.md`
 - `claude-new.agent.md`
 - `fleet.agent.md`
 
