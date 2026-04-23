@@ -75,6 +75,7 @@ agents:
       - tipi-claude-spawn/*
       - tipi-consciousness/*
       - tipi-dizzy/*
+      - agentic-coding-school/*
       - nate-promptkit/*
       # VS Code core chat primitives
       - vscode

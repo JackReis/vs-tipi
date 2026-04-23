@@ -20,6 +20,16 @@
       "command": "${CLAUDE_PLUGIN_ROOT}/scripts/run-mcp.sh",
       "args": ["tipi.mcp.claude_spawn.server"]
     },
+    "agentic-coding-school": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://www.agenticcoding.school/api/mcp"
+      ],
+      "description": "Agentic Coding School remote MCP, mirrored from the Warp-side HTTP config."
+    },
     "nate-promptkit": {
       "type": "stdio",
       "command": "npx",

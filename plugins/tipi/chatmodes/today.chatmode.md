@@ -4,6 +4,7 @@ description: At-the-computer cockpit. Auto-runs /tipi:gather on activation, pre-
 tools:
   - tipi-consciousness/*
   - nate-promptkit/*
+  - agentic-coding-school/*
   - tipi-dizzy/send_to_discord
   - vscode
   - read

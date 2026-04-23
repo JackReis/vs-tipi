@@ -11,7 +11,7 @@ A VS Code Agents plugin that wires the fleet into Jack's at-the-computer cockpit
 Prerequisites:
 - VS Code Insiders with the Agents Preview app (v1.115+)
 - Python 3.11+ on PATH
-- Node.js + npx (for the `nate-promptkit` remote MCP, if you want `/tipi:kit` to work)
+- Node.js + npx (for the remote MCPs, including `nate-promptkit` and `agentic-coding-school`)
 
 ### Env var for `/tipi:kit` (optional)
 
@@ -62,11 +62,14 @@ Then check `scripts/run-mcp.sh` is executable (`chmod +x scripts/run-mcp.sh`).
 vs-tipi/
 ├── .claude-plugin/
 │   └── marketplace.json          # marketplace catalog
+├── agents-app/                   # generated separate VS Code Agents app projection
+├── scripts/
+│   └── generate-agents-app-projection.py
 └── plugins/
     └── tipi/
         ├── .claude-plugin/
         │   └── plugin.json       # plugin manifest
-        ├── .mcp.json             # 6 tipi MCP servers
+        ├── .mcp.json             # 7 tipi MCP servers
         ├── agents/               # @hermes, @zolivier, @kimiclaw, @claude-new, @fleet
         ├── skills/               # /gather, /dispatch, /inbox, /handoff, /resume, /kit
         ├── chatmodes/            # Today mode
@@ -80,6 +83,12 @@ vs-tipi/
 Jack (2026-04-21): *"the movable shelter and gathering place for the agents to express, refresh and refine their context — this is where the agents can have their richest 'dreams' because of the influences of their tipi-mates."*
 
 `vs-tipi` is the first pitched location. Future enclosures (`cursor-tipi`, `zed-tipi`) reuse the `tipi` submodule unchanged — poles travel, cover changes.
+
+## Separate Agents app projection
+
+The VS Code Agents app is a separate enclosure from the plugin bundle. Its workspace lives in `agents-app/` and is generated from the coordination roster in `~/Documents/Coordination/2026-04-23-vscode-agents-app-roster.json` by `scripts/generate-agents-app-projection.py`.
+
+That projection keeps the same fleet agent set and MCP surface aligned with the SSOT, while still letting the separate app have its own workspace settings and discovery path.
 
 ## Related
 

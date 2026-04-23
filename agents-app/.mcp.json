@@ -1,0 +1,54 @@
+{
+  "mcpServers": {
+    "agentic-coding-school": {
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://www.agenticcoding.school/api/mcp"
+      ],
+      "command": "npx",
+      "description": "Agentic Coding School remote MCP, mirrored from the Warp-side HTTP config.",
+      "type": "stdio"
+    },
+    "nate-promptkit": {
+      "args": [
+        "-y",
+        "mcp-remote",
+        "${NATE_PROMPTKIT_URL}"
+      ],
+      "command": "npx",
+      "description": "Nate B. Jones Exec Circle library (posts, prompt kits, guides). Requires NATE_PROMPTKIT_URL env var \u2014 set it to your subscriber MCP URL.",
+      "type": "stdio"
+    },
+    "tipi-claude-spawn": {
+      "args": [
+        "tipi.mcp.claude_spawn.server"
+      ],
+      "command": "/Users/jack.reis/Documents/vs-tipi/plugins/tipi/scripts/run-mcp.sh"
+    },
+    "tipi-consciousness": {
+      "args": [
+        "tipi.mcp.consciousness.server"
+      ],
+      "command": "/Users/jack.reis/Documents/vs-tipi/plugins/tipi/scripts/run-mcp.sh"
+    },
+    "tipi-dizzy": {
+      "args": [
+        "tipi.mcp.dizzy.server"
+      ],
+      "command": "/Users/jack.reis/Documents/vs-tipi/plugins/tipi/scripts/run-mcp.sh"
+    },
+    "tipi-hermes": {
+      "args": [
+        "tipi.mcp.hermes.server"
+      ],
+      "command": "/Users/jack.reis/Documents/vs-tipi/plugins/tipi/scripts/run-mcp.sh"
+    },
+    "tipi-openclaw": {
+      "args": [
+        "tipi.mcp.openclaw.server"
+      ],
+      "command": "/Users/jack.reis/Documents/vs-tipi/plugins/tipi/scripts/run-mcp.sh"
+    }
+  }
+}

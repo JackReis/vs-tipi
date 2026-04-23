@@ -12,7 +12,7 @@
     {
       "name": "tipi",
       "source": "./plugins/tipi",
-      "description": "Minimal enclosure for gathering and sharing with the fleet — 5 agents, 6 slash commands, Today chat mode, 6 MCP servers wired to the portable tipi core (github.com/JackReis/tipi).",
+      "description": "Minimal enclosure for gathering and sharing with the fleet — 5 agents, 6 slash commands, Today chat mode, 7 MCP servers wired to the portable tipi core (github.com/JackReis/tipi).",
       "version": "0.1.0",
       "category": "productivity",
       "author": {
