@@ -9,7 +9,7 @@
 The vault's `=notes/docs/architecture/fleet-architecture-guidelines.md` is the spine. For vs-tipi work, the sections that matter most:
 
 - **§1 Three-layer consciousness** — vs-tipi is an enclosure; never writes to Body/Mind/Spirit.
-- **§2 Fleet Identity & Surfaces** — runtimes (Hermes, Zolivier, KimiClaw, PT, Claude Code) map to agents in `plugins/tipi/agents/`. Keep rosters in sync.
+- **§2 Fleet Identity & Surfaces** — runtimes (Hermes, OLIVIER_MBP, KimiClaw, PT, Claude Code) map to agents in `plugins/tipi/agents/`. Keep rosters in sync.
 - **§3 Shared contract** — `consciousness-interface.json` is LOCKED. Schema changes go through `~/Documents/Coordination/2026-04-21-infra-context-dashboard-coordination.md` first.
 - **§6.5 Runtime instruction cascade** *(v1.6.0)* — each runtime reads its own native cascade file. This `CLAUDE.md` is Claude Code's cascade for this repo. Don't invent `<RUNTIME>-MEMORY.md` files; per-runtime archival earns its place by content, not naming.
 

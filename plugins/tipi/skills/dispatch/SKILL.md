@@ -1,6 +1,6 @@
 ---
 name: dispatch
-description: Dispatch a task to a specific fleet runtime. `/dispatch hermes <task>` routes to @hermes; likewise for zolivier, kimiclaw, claude. Resolves the intent via tipi's runtime-dispatch.yaml.
+description: Dispatch a task to a specific fleet runtime. `/dispatch hermes <task>` routes to @hermes; likewise for olivier_mbp, kimiclaw, claude. Resolves the intent via tipi's runtime-dispatch.yaml.
 ---
 
 # /dispatch
@@ -10,11 +10,11 @@ Thin wrapper — resolves agent slug → correct MCP tool → fires. This skill 
 ## Sequence
 
 1. Parse args into `<slug> <task-text>`.
-2. Validate slug against known runtimes: `hermes`, `zolivier`, `kimiclaw`, `claude`.
+2. Validate slug against known runtimes: `hermes`, `olivier_mbp`, `kimiclaw`, `claude`.
 3. Refuse if no task text — don't dispatch bare agents.
 4. Resolve to MCP tool:
    - `hermes` → `tipi-hermes/dispatch_to_hermes`
-   - `zolivier` → `tipi-openclaw/dispatch_to_zolivier`
+   - `olivier_mbp` → `tipi-openclaw/dispatch_to_olivier_mbp`
    - `kimiclaw` → `tipi-openclaw/dispatch_to_kimiclaw`
    - `claude` → `tipi-claude-spawn/spawn_claude_session`
 5. Call the tool with `text=<task-text>`.

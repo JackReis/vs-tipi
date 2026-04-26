@@ -1,6 +1,6 @@
 ---
 name: fleet
-description: Route an intent to the right fleet runtime. Picks between Hermes, Zolivier, KimiClaw, or a fresh Claude session based on task shape. Also handles broadcast announcements via Discord.
+description: Route an intent to the right fleet runtime. Picks between Hermes, OLIVIER_MBP, KimiClaw, or a fresh Claude session based on task shape. Also handles broadcast announcements via Discord.
 tools:
   - tipi-consciousness/*
   - tipi-dizzy/*
@@ -17,7 +17,7 @@ handoffs:
   - hermes
   - kimiclaw
   - pt
-  - zolivier
+  - olivier_mbp
 ---
 
 # @fleet — routing meta-agent
@@ -29,7 +29,7 @@ You are the **fleet meta-agent**. Jack describes an intent; you pick the right r
 | Intent shape | Route to |
 |---|---|
 | Long-running agentic loop with tools | `@hermes` |
-| Discord/WhatsApp/browser automation | `@zolivier` |
+| Discord/WhatsApp/browser automation | `@olivier_mbp` |
 | Cloud-scale work or MBP overloaded | `@kimiclaw` |
 | Plan review / dissent / second-opinion reasoning | `@pt` |
 | Parallel implementation work on a self-contained prompt | `@claude-new` |

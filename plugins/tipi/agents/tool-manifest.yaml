@@ -8,7 +8,7 @@
 #   - @fleet   — MINIMAL routing agent. Read-only fleet state + Discord
 #                broadcast + handoff. No dev tools.
 #   - @hermes  — Dispatch to Hermes runtime. Consciousness reads + dispatch.
-#   - @zolivier — Dispatch to Zolivier (OpenClaw). Same pattern as @hermes.
+#   - @olivier_mbp — Dispatch to OLIVIER_MBP (OpenClaw). Same pattern as @hermes.
 #   - @kimiclaw — Dispatch to KimiClaw (cloud). Same pattern as @hermes.
 #   - @claude-new — Spawn fresh Claude Code session. HEAVY dev toolset because
 #                   the spawned session may run implementation work.
@@ -49,10 +49,10 @@ agents:
       - vscode
       - read
 
-  zolivier:
-    description: Dispatch to Zolivier (local OpenClaw) — consciousness reads + openclaw dispatch
+  olivier_mbp:
+    description: Dispatch to OLIVIER_MBP (local OpenClaw on MacBook Pro) — consciousness reads + openclaw dispatch
     allowed:
-      - tipi-openclaw/dispatch_to_zolivier
+      - tipi-openclaw/dispatch_to_olivier_mbp
       - tipi-consciousness/search_beliefs
       - tipi-consciousness/search_mind
       - tipi-consciousness/body_state

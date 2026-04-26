@@ -9,7 +9,7 @@ Source of truth:
 
 Generated surfaces:
 - `hermes.agent.md`
-- `zolivier.agent.md`
+- `olivier_mbp.agent.md`
 - `kimiclaw.agent.md`
 - `pt.agent.md`
 - `claude-new.agent.md`

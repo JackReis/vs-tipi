@@ -30,7 +30,7 @@ class GenerateAgentsAppProjectionTest(unittest.TestCase):
                     {
                         "agent_files": [
                             "hermes.agent.md",
-                            "zolivier.agent.md",
+                            "olivier_mbp.agent.md",
                             "kimiclaw.agent.md",
                             "claude-new.agent.md",
                             "fleet.agent.md",
@@ -52,7 +52,7 @@ class GenerateAgentsAppProjectionTest(unittest.TestCase):
                 output_root / ".mcp.json",
                 output_root / ".vscode" / "settings.json",
                 output_root / ".github" / "agents" / "hermes.agent.md",
-                output_root / ".github" / "agents" / "zolivier.agent.md",
+                output_root / ".github" / "agents" / "olivier_mbp.agent.md",
                 output_root / ".github" / "agents" / "kimiclaw.agent.md",
                 output_root / ".github" / "agents" / "claude-new.agent.md",
                 output_root / ".github" / "agents" / "fleet.agent.md",

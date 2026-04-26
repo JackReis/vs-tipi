@@ -70,7 +70,7 @@ vs-tipi/
         ├── .claude-plugin/
         │   └── plugin.json       # plugin manifest
         ├── .mcp.json             # 7 tipi MCP servers
-        ├── agents/               # @hermes, @zolivier, @kimiclaw, @pt, @claude-new, @fleet
+        ├── agents/               # @hermes, @olivier_mbp, @kimiclaw, @pt, @claude-new, @fleet
         ├── skills/               # /gather, /dispatch, /inbox, /handoff, /resume, /kit
         ├── chatmodes/            # Today mode
         ├── scripts/
@@ -89,7 +89,7 @@ Jack (2026-04-21): *"the movable shelter and gathering place for the agents to e
 vs-tipi consumes the posture defined in the vault's **`=notes/docs/architecture/fleet-architecture-guidelines.md`** (currently v1.6.0+). Cold-starting in this repo? Read §0 (thirteen bullets) first — it covers:
 
 - **Three-layer consciousness** — Body (vault) → Mind (OBn/Khoj) → Spirit (belief-ledger, future). Epigenetics (PromptKit) is adjacent input, not a fourth layer.
-- **Fleet identity** — Hermes↔Wings, Zolivier↔Zoe, KimiClaw↔(Mara, Kopi), **PT↔Neo** (Gemini CLI), plus Claude Code sessions (Dizzy surface).
+- **Fleet identity** — Hermes↔Wings, OLIVIER_MBP↔Zoe, KimiClaw↔(Mara, Kopi), **PT↔Neo** (Gemini CLI), plus Claude Code sessions (Dizzy surface).
 - **Runtime instruction cascade** (§6.5) — Claude reads `CLAUDE.md`, Codex reads `AGENTS.md`, Gemini-CLI/PT reads `GEMINI.md`. Each runtime owns its own cascade file only.
 - **Enclosure invariant** (§1) — vs-tipi consumes the three layers via MCP, never writes back to the substrate.
 

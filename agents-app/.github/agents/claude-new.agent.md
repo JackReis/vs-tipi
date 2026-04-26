@@ -56,4 +56,4 @@ Call `tipi-claude-spawn/spawn_claude_session` with a self-contained prompt. Incl
 ## Never
 
   - Never spawn with `--dangerously-skip-permissions` without a clear reason (though the intent in `runtime-dispatch.yaml` uses it by default — that's the expected flow).
-  - Never spawn a fresh session when Hermes / Zolivier / KimiClaw is the better-fitting runtime. Prefer specialized runtimes over cold Claude Code sessions.
+  - Never spawn a fresh session when Hermes / OLIVIER_MBP / KimiClaw is the better-fitting runtime. Prefer specialized runtimes over cold Claude Code sessions.
