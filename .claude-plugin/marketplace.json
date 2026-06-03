@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "vs-tipi",
-  "description": "Tipi enclosures — at-the-computer agentic fleet coordination. Currently ships one plugin: tipi, the VS Code Agents enclosure.",
+  "description": "Tipi enclosures — VS Code surfaces for the Agentic OS consciousness substrate and its sinew layer. Currently ships one plugin: tipi, the VS Code Agents enclosure.",
   "owner": {
     "name": "JackReis",
     "email": "jackareis@gmail.com"
@@ -12,7 +12,7 @@
     {
       "name": "tipi",
       "source": "./plugins/tipi",
-      "description": "Minimal enclosure for gathering and sharing with the fleet — 5 agents, 6 slash commands, Today chat mode, 7 MCP servers wired to the portable tipi core (github.com/JackReis/tipi).",
+      "description": "VS Code enclosure for the unified Agentic OS fleet spec: consciousness substrate, sinew connections, actor routing, Today cockpit, and MCP access through the portable tipi core.",
       "version": "0.1.0",
       "category": "productivity",
       "author": {
@@ -25,6 +25,8 @@
         "agents",
         "mcp",
         "consciousness",
+        "sinew",
+        "agentic-os",
         "tipi"
       ]
     }

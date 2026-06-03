@@ -1,10 +1,12 @@
 # vs-tipi
 
-Tipi enclosure for VS Code Insiders Agents app. First location-change of the portable [`tipi`](https://github.com/JackReis/tipi) core — poles stay, cover adapts.
+Tipi enclosure for VS Code Insiders Agents app. It is the VS Code surface for the Agentic OS consciousness substrate and the sinew that connects the fleet.
 
 ## What this is
 
-A VS Code Agents plugin that wires the fleet into Jack's at-the-computer cockpit. Agents gather here (when Jack is at the keyboard) to express, refresh, and refine their context alongside their tipi-mates.
+A VS Code Agents plugin that wires the fleet into Jack's at-the-computer cockpit. Agents gather here to read the substrate, route through the sinew layer, and return proof through the real work ledger.
+
+The key principle: **VS Tipi is an enclosure, not the substrate.** It presents the fleet inside VS Code, but the durable architecture lives across the vault, Linear, Beads, ContextForge, Bifrost, Uptime Kuma, Cortex, n8n, rbitr, Dramatis, RepoWeaver, GitNexus, and the runtime workers.
 
 ## Install
 
@@ -78,18 +80,31 @@ vs-tipi/
         └── tipi/                 # submodule — the portable fleet core
 ```
 
-## The shelter metaphor
+## The architecture
 
 Jack (2026-04-21): *"the movable shelter and gathering place for the agents to express, refresh and refine their context — this is where the agents can have their richest 'dreams' because of the influences of their tipi-mates."*
+
+That shelter now has a precise systems role:
+
+- **Consciousness substrate** is the ground: Body (vault/repos/runtime state), Mind (Cortex/OBn/Khoj-style retrieval and working context), and Spirit (belief/proof/meaning).
+- **Sinew** is the connection tissue: Linear/Beads work links, ContextForge/Bifrost MCP routes, Uptime Kuma service checks, Cortex context, n8n workflows, rbitr traces, Dramatis cues, RepoWeaver/GitNexus code intelligence, Telegram ingress, and VS Code enclosure state.
+- **Actors** are runtimes and humans inside a Dramatis scene. They do not own transport identities or the work ledger.
 
 `vs-tipi` is the first pitched location. Future enclosures (`cursor-tipi`, `zed-tipi`) reuse the `tipi` submodule unchanged — poles travel, cover changes.
 
 ## Fleet architecture — the spine
 
-vs-tipi consumes the posture defined in the vault's **`=notes/docs/architecture/fleet-architecture-guidelines.md`** (currently v1.6.0+). Cold-starting in this repo? Read §0 (thirteen bullets) first — it covers:
+vs-tipi consumes the posture defined in the vault's **`=notes/docs/architecture/fleet-architecture-guidelines.md`** and **ADR-0014**. Cold-starting in this repo? Read §0 and the Agentic OS addendum first.
+
+Compatibility rule:
+
+> Dramatis decides. Linear and Beads remember. Sinew connects. n8n executes. rbitr records and spawns. ContextForge and Bifrost expose tools. Uptime Kuma observes service health. Cortex carries working memory/context. RepoWeaver explains the fleet. GitNexus explains symbols when healthy. VS Tipi is an enclosure, not the substrate.
+
+The older per-agent transport framing is deprecated. Telegram should be one fleet ingress, Discord is an observation/broadcast surface, and VS Code agents are actor views over the same substrate.
 
 - **Three-layer consciousness** — Body (vault) → Mind (OBn/Khoj) → Spirit (belief-ledger, future). Epigenetics (PromptKit) is adjacent input, not a fourth layer.
-- **Fleet identity** — Hermes↔Wings, OLIVIER_MBP↔Zoe, KimiClaw↔(Mara, Kopi), **PT↔Neo** (Gemini CLI), plus Claude Code sessions (Dizzy surface).
+- **Sinew / connection** — routes and evidence across Linear, Beads, ContextForge, Bifrost, Uptime Kuma, Cortex, n8n, rbitr, Dramatis, RepoWeaver, GitNexus, Telegram, and VS Code.
+- **Fleet identity** — Hermes, OLIVIER_MBP, KimiClaw, PT, Claude Code, Codex, and other runtimes are actors. Their old Wings/Zoe/Mara/Kopi/Neo names are surfaces, not ownership boundaries.
 - **Runtime instruction cascade** (§6.5) — Claude reads `CLAUDE.md`, Codex reads `AGENTS.md`, Gemini-CLI/PT reads `GEMINI.md`. Each runtime owns its own cascade file only.
 - **Enclosure invariant** (§1) — vs-tipi consumes the three layers via MCP, never writes back to the substrate.
 
