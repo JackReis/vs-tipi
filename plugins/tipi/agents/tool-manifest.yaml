@@ -68,6 +68,14 @@ agents:
       - vscode
       - read
 
+  rbitr:
+    description: Actor view over Rbitr (evolved Arbiter orchestrator on :8765) — consciousness reads + rbitr dispatch
+    allowed:
+      - tipi-rbitr/*
+      - tipi-consciousness/search_beliefs
+      - tipi-consciousness/search_mind
+      - vscode
+      - read
   kimiclaw:
     description: Actor view over KimiClaw (cloud OpenClaw) — consciousness reads + openclaw dispatch
     allowed:

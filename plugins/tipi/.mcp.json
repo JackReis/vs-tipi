@@ -16,6 +16,10 @@
       "command": "${CLAUDE_PLUGIN_ROOT}/scripts/run-mcp.sh",
       "args": ["tipi.mcp.openclaw.server"]
     },
+    "tipi-rbitr": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/run-mcp.sh",
+      "args": ["tipi.mcp.rbitr.server"]
+    },
     "tipi-claude-spawn": {
       "command": "${CLAUDE_PLUGIN_ROOT}/scripts/run-mcp.sh",
       "args": ["tipi.mcp.claude_spawn.server"]
